@@ -2,8 +2,8 @@ import jwt from "jsonwebtoken";
 
 const auth = async (req, res, next) => {
   try {
-    const token = req.headers.authorization.split(" ")[1];
-    const isCustomAuth = token.length < 500;
+    const token = req?.headers?.authorization?.split(" ")[1];
+    const isCustomAuth = token?.length < 500;
 
     let decodedData;
 
@@ -17,8 +17,7 @@ const auth = async (req, res, next) => {
 
     next();
   } catch (error) {
-    res.json({ status: false, message: 'Unauthorized request' });
-    console.log('error', error);
+    res.json({ data: null, status: false, message: "Unauthorized request" });
   }
 };
 

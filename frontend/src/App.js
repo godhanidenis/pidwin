@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "@mui/material";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 
@@ -9,8 +9,22 @@ import Navbar from "./components/Navbar/Navbar";
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
 import PasswordSetting from "./components/PasswordSettings/PasswordSettings";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserProfile } from "./actions/userProfile";
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  const {
+    data: userData,
+    error,
+    loading,
+  } = useSelector((state) => state.userProfile);
+
+  useEffect(() => {
+    dispatch(getUserProfile());
+  }, []);
+
   return (
     <BrowserRouter>
       <Container maxWidth="lg">

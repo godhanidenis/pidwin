@@ -6,6 +6,6 @@ import lastTosses from "./last-tosses.js";
 const router = express.Router();
 
 router.post("/coinToss", auth, coinToss);
-router.get("/last-tosses", auth, lastTosses);
+router.get("/lastTosses", auth, lastTosses);
 
 export default router;
